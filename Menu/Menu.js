@@ -33,22 +33,71 @@ let menuItems = [
   Step 6: add the menu component to the DOM.
   
 */
-function createMenu(item) {
+// function createMenu(content) {
+//   //Create
+//   const menu = document.createElement("div");
+//   const list = document.createElement("ul");
+  
+//   //Style
+//   menu.classList.add("menu");
+
+//   //Add to DOM
+//   menu.appendChild(list);
+
+//   //Create menu items from array 
+//   menuItems.forEach((item) => {
+//     const listItem = document.createElement("li");
+//     listItem.textContent = item;
+//     list.appendChild(listItem);
+//   });
+
+//   //Add button listener and action
+//   const button = document.querySelector(".menu-button");
+//   button.addEventListener("click", (e => {
+//     menu.classList.toggle("menu-open");
+//     //console.log("click: ", click)
+//     }
+//   ));
+  
+  
+
+  
+//   return menu;
+// }
+
+// createMenu(menuItems);
+
+// let header = document.querySelector(".header");
+// header.appendChild(createMenu(menuItems));
+function createMenu(content) {
+  //Create
   const menu = document.createElement("div");
   const list = document.createElement("ul");
-  
-  menu.classList = "menu";
 
+  //Structure
   menu.appendChild(list);
 
-  
-  menuItems.forEach((item) => {
+  //Style..add <li>s
+  menu.classList.add("menu");
+
+  //content of the li = listItem's content and make it a child element to ul
+  menuItems.forEach(element => {
     const listItem = document.createElement("li");
-    listItem.textContent = item;
+    listItem.textContent = element;
     list.appendChild(listItem);
+  });
 
-  } )
-  
+  const button = document.querySelector(".menu-button");
+  button.addEventListener("click", event => {
+    menu.classList.toggle("menu--open");
+    console.log("click");
+  });
 
-  return menuItems;
+  console.log(menu);
+  return menu;
 }
+
+createMenu(menuItems);
+
+let header = document.querySelector(".header");
+header.appendChild(createMenu(menuItems));
