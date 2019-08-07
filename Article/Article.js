@@ -112,3 +112,47 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new artible
 
 */
+
+// // Create Elements
+function createCard(cardInfo){
+  const article = document.createElement('div');
+      title = document.createElement('h2');
+      date = document.createElement('p');
+      firstParagraph = document.createElement('p'); 
+      secondParagraph = document.createElement('p');
+      thirdParagraph = document.createElement('p');
+      expandButton = document.createElement('span');
+
+      // // Create Classes
+  article.classList.add("article");
+  title.classList.add("title");
+  date.classList.add("date");
+  expandButton.classList.add("expandButton");
+  expandButton.textContent = "OPEN/CLOSE";
+
+  title.textContent = cardInfo.title;
+  date.textContent = cardInfo.date;
+  firstParagraph.textContent = cardInfo.firstParagraph;
+  secondParagraph.textContent = cardInfo.secondParagraph;
+  thirdParagraph.textContent = cardInfo.thirdParagraph;
+  
+  article.appendChild(title);
+  article.appendChild(date);
+  article.appendChild(firstParagraph);
+  article.appendChild(secondParagraph);
+  article.appendChild(thirdParagraph);
+  article.appendChild(expandButton);
+
+  expandButton.addEventListener("click", (e => article.classList.toggle("article-open")));
+
+  return article;
+}
+
+const mend = document.querySelector(".articles");
+console.log("mend: ", mend);
+
+data.forEach(cardInfo => {
+  document.querySelector(".articles").appendChild(createCard(cardInfo));
+  
+})
+
